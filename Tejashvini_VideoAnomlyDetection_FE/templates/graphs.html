@@ -1,0 +1,53 @@
+{% extends "base.html" %} {% block title %} ATM_AnomlyDetection|Graphs {%
+endblock %} {% block content %}
+<style>
+  body {
+    width: 100%;
+    height: 100vh;
+
+    background-image: url("static/img/bg1.jpg");
+    backdrop-filter: blur(2px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+  }
+
+  .graphs_pg {
+    height: 88vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    text-align: center;
+  }
+
+  .g_title {
+    color: white;
+  }
+
+  img {
+    width: 800px;
+    height: 400px;
+  }
+
+  #cmp_g {
+    width: 800px;
+    height: 600px;
+  }
+</style>
+
+<body>
+  <div class="graphs_pg">
+    <h3 class="g_title">Convolutional Neural Network</h3>
+    <br />
+    <h4 class="g_title">Accuracy Plot Graphs</h4>
+    <img src="/static/graphs/c_ac.png" alt="Image 3" class="g_img" /><br /><br />
+    <h4 class="g_title">Loss Plot Graph</h4>
+    <img src="/static/graphs/c_ls.png" alt="Image 4" class="g_img" /><br /><br />
+    <h4 class="g_title">Classification Report</h4>
+    <img src="/static/graphs/c_cr.png" alt="Image 1" class="g_img" /><br /><br />
+    <h4 class="g_title">Confusion Matrix</h4>
+    <img src="/static/graphs/c_cm.png" alt="Image 2" class="g_img" /><br /><br /><br />
+  </div>
+</body>
+
+{% endblock %}

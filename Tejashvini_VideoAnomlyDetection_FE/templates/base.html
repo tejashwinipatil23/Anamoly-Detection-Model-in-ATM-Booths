@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %} {% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+</head>
+<style>
+  body {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #titleBtn {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+
+    margin-top: 13px;
+  }
+
+  #title {
+    font-family: "Bodoni MT Black", sans-serif;
+    font-size: 38px;
+    font-weight: bold;
+    color: white;
+    margin-left: 70px;
+  }
+
+  #Btn {
+    margin-left: 60px;
+    margin-top: 6px;
+  }
+
+  /* CSS */
+
+  .button-81 {
+    margin-right: 7px;
+    margin-top: 3px;
+  }
+
+  .button-81 {
+    background-color: #fff;
+    border: 0 solid #e2e8f0;
+    border-radius: 1.5rem;
+    box-sizing: border-box;
+    color: #0d172a;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 1rem 1.6rem;
+    text-align: center;
+    text-decoration: none #0d172a solid;
+    text-decoration-thickness: auto;
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .button-81:hover {
+    background-color: #1e293b;
+    color: #fff;
+  }
+
+  @media (min-width: 768px) {
+    .button-81 {
+      font-size: 1.125rem;
+      padding: 0.7rem 1.4rem;
+    }
+  }
+</style>
+
+<body>
+  <div id="titleBtn">
+    <div id="title">ATM ANOMALY DETECTION</div>
+    <div id="Btn">
+      <a href="/home"><button class="button-81" role="button">HOME</button></a>
+
+      <a href="/graph"><button class="button-81" role="button">GRAPHS</button></a>
+
+      <a href="/password"><button class="button-81" role="button">PASSWORD</button></a>
+
+      <a href="/logout">
+        <button class="button-81" role="button">LOGOUT</button>
+      </a>
+    </div>
+  </div>
+
+  <div id="container"></div>
+
+  {% block content %} {% endblock %}
+</body>
+
+</html>

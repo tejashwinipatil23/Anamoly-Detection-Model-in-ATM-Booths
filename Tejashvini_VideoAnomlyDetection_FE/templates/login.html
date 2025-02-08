@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>ATM_AnomlyDetection|Login</title>
+  <link rel="stylesheet" href="static/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    body {
+      width: 100%;
+      height: 100vh;
+      background-image: url("static/img/bg2.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      position: fixed;
+    }
+
+    #titleBtn {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
+
+      margin-top: -42px;
+    }
+
+    #title {
+      font-family: "Bodoni MT Black", sans-serif;
+      font-size: 38px;
+      font-weight: bold;
+      color: white;
+      margin-left: 70px;
+    }
+
+    #resp_msg {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="titleBtn">
+    <div id="title">ATM ANOMALY DETECTION</div>
+  </div>
+
+  <div class="content">
+    <div class="text">Login Form</div>
+    <form action="/login" method="POST">
+      <div class="field">
+        <input type="email" id="email" name="email" placeholder="Email" required />
+        <span class="fas fa-user"></span>
+      </div>
+      <div class="field">
+        <input type="password" id="pwd" name="pwd" placeholder="Password" required />
+        <span class="fas fa-lock"></span>
+      </div>
+
+      <button>Sign in</button>
+      <div class="sign-up">
+        Not a member?
+        <a href="/register">signup now</a>
+      </div>
+
+      <h4 id="resp_msg">{{msg }}</h4>
+    </form>
+  </div>
+</body>
+
+</html>

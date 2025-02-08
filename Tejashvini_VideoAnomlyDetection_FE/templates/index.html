@@ -1,0 +1,236 @@
+{% extends 'base.html' %} {% block title %}ATM_AnomlyDetection|Home{% endblock %} {% block content %}
+<style>
+  body {
+    width: 100%;
+    height: 100vh;
+    background-image: url("static/img/bg1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+  }
+
+  img {
+    width: 150px;
+    height: 75px;
+    margin: 4px;
+  }
+
+  .v_cap_imgs {
+    display: flex;
+    flex-direction: row;
+
+    width: 95%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin-left: 2.5%;
+  }
+
+  .img_title {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 800;
+    color: #309aaf;
+  }
+
+  .vdo_form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .vdo_ipt {
+    width: 200px;
+    color: orange;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    color: #333;
+  }
+
+  input[type="file"] {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  .form_vdo {
+    display: flex;
+    flex-direction: row;
+    margin-left: 16%;
+    margin-top: 30px;
+  }
+
+  ._vdo {
+    margin-left: 30px;
+  }
+
+  #pre_result {
+    text-align: center;
+    margin-top: 20px;
+
+    background: rgba(255, 255, 255, 0.72);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(14.7px);
+    -webkit-backdrop-filter: blur(14.7px);
+    border: 2px solid black;
+
+    width: 95%;
+    margin-left: 2.5%;
+  }
+
+  #pred_result {
+    font-size: 45px;
+    font-weight: 800;
+  }
+
+  .video_form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2%;
+  }
+
+  .form_ {
+    width: 60%;
+    text-align: center;
+
+    border-radius: 10px;
+    padding: 1%;
+
+    background: rgba(255, 255, 255, 0.56);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10.4px);
+    -webkit-backdrop-filter: blur(10.4px);
+    border-bottom: 3px solid black;
+    border-left: 3px solid black;
+  }
+
+  .loader {
+    display: block;
+    position: relative;
+    height: 32px;
+    width: 140px;
+    border: 3px solid #fff;
+    border-radius: 20px;
+    box-sizing: border-box;
+    margin: auto;
+  }
+
+  .loader:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #FF3D00;
+    animation: ballbns 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes ballbns {
+    0% {
+      left: 0;
+      transform: translateX(0%);
+    }
+
+    100% {
+      left: 100%;
+      transform: translateX(-100%);
+    }
+  }
+</style>
+</head>
+
+<body>
+
+
+  <div class="video_form">
+    <div class="form_">
+      <form action="/index" method="POST" enctype="multipart/form-data" id="form_load">
+        <label for="file_" style="font-weight: bold">Select Video File</label>
+
+        <input type="file" style="width: 70%; margin: 10px auto; color: #70dbf3" class="form-control" required
+          placeholder="upload Image.. " type="file" name="video" accept="video/*" class="vdo_ipt" id="vdo_ip" />
+
+        <div class="button">
+          <button class="button-81" role="button">UPLOAD</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="_vdo">
+      {% if video_path %}
+      <video width="200" height="165" controls autoplay muted loop>
+        <source src="{{ video_path }}" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if images %}
+
+  <h2 class="img_title">Captured Frames</h2>
+  <div class="v_cap_imgs">
+    {% for image in images %}
+    <img src="{{ image }}" alt="Frame" />
+    {% endfor %}
+  </div>
+
+  {% endif %} {% if pro %}
+
+  <div id="pre_result">
+    <h3 style="font-weight: bold;">PREDICTED RESULT</h3>
+    <h1 style="color: #309aaf" id="pred_result">{{ pro }}</h1>
+    <p>{{ msg }}</p>
+  </div>
+
+  {% endif %}
+
+  <div id="load" style="display: none; text-align: center; color: blue; margin-top: 20px;">
+    <span class="loader"></span>
+    <!-- Loader content goes here -->
+    Loading...
+  </div>
+
+  <script>
+    // JavaScript to handle form submission event
+    document
+      .querySelector("#form_load")
+      .addEventListener("submit", function (event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+
+        // Show loader when the form is submitted
+        let loader = document.querySelector("#load");
+        loader.style.display = "block";
+
+        // Submit the form programmatically after showing the loader
+        // This ensures that the loader is displayed before the form submission
+        document.querySelector("#form_load").submit();
+      });
+  </script>
+</body>
+{% endblock %}
